@@ -1,1 +1,18 @@
+name: "Deploy ToDO Server API"
 
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - uses: actions/checkout@v3
+      
+      - name: Build docker image
+        run: docker build -t todo-app:latest .
+
+      - name: Run the container
+        run: docker run -p 3000:3000 todo-app:latest
