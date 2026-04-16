@@ -15,4 +15,4 @@ jobs:
         run: docker build -t todo-app:latest .
 
       - name: Run the container
-        run: docker run -p 3000:3000 todo-app:latest
+        run: docker run -p 3000:3000 -d todo-app:latest
